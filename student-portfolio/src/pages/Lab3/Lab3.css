@@ -1,0 +1,185 @@
+
+.lab3-wrapper {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: transparent; 
+  color: #333;
+  min-height: calc(100vh - 64px);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.lab3-wrapper .address-book-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, color 0.3s; 
+}
+
+.lab3-wrapper h1,
+.lab3-wrapper h2,
+.lab3-wrapper h3 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.lab3-wrapper form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.lab3-wrapper form h3 {
+  margin: 0 0 0.5rem 0;
+  color: #555;
+  font-weight: 600;
+  text-align: left;
+}
+
+.lab3-wrapper input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: white;
+  color: black;
+  transition: background-color 0.3s, color 0.3s, border 0.3s;
+}
+
+.lab3-wrapper button {
+  padding: 10px 15px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.lab3-wrapper button:hover {
+  background-color: #0056b3;
+}
+
+.lab3-wrapper .error {
+  color: #d9534f; 
+  font-size: 0.85rem;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.lab3-wrapper .search-bar {
+  margin-bottom: 1.5rem;
+  display: flex;
+}
+
+.lab3-wrapper .table-container {
+  overflow-x: auto; 
+}
+
+.lab3-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; 
+  background-color: white;
+  color: black;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.lab3-wrapper th,
+.lab3-wrapper td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lab3-wrapper th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #333;
+}
+
+.lab3-wrapper tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.lab3-wrapper th:nth-child(1), .lab3-wrapper td:nth-child(1) { width: 10%; }
+.lab3-wrapper th:nth-child(2), .lab3-wrapper td:nth-child(2) { width: 25%; }
+.lab3-wrapper th:nth-child(3), .lab3-wrapper td:nth-child(3) { width: 25%; }
+.lab3-wrapper th:nth-child(4), .lab3-wrapper td:nth-child(4) { width: 20%; }
+.lab3-wrapper th:nth-child(5), .lab3-wrapper td:nth-child(5) { width: 140px; text-align: center; }
+
+.lab3-wrapper td button {
+  margin: 0 3px;
+  padding: 5px 10px;
+  font-size: 0.85rem;
+}
+
+.lab3-wrapper td button:last-child {
+   background-color: #dc3545;
+}
+.lab3-wrapper td button:last-child:hover {
+   background-color: #c82333;
+}
+
+
+
+.lab3-wrapper.dark .address-book-container {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.lab3-wrapper.dark h1,
+.lab3-wrapper.dark form h3 {
+  color: #ffffff;
+}
+
+.lab3-wrapper.dark input {
+  background-color: #2d2d2d;
+  color: white;
+  border: 1px solid #444;
+}
+
+.lab3-wrapper.dark input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.lab3-wrapper.dark form {
+  border-bottom: 1px solid #444;
+}
+
+.lab3-wrapper.dark table {
+  background-color: #1e1e1e;
+  color: white;
+}
+
+.lab3-wrapper.dark th,
+.lab3-wrapper.dark td {
+  border-color: #444;
+}
+
+.lab3-wrapper.dark th {
+  background-color: #2c2c2c;
+  color: white;
+}
+
+.lab3-wrapper.dark tr:nth-child(even) {
+  background-color: #262626;
+}
+
+.lab3-wrapper.dark tr:nth-child(odd) {
+  background-color: #1e1e1e;
+}
