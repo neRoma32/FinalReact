@@ -1,16 +1,46 @@
-# React + Vite
+## ComponentTree
+![Component Tree Diagram](assets/component-tree.png)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Architectural Decisions
 
-Currently, two official plugins are available:
+- Providers layer – глобальна логіка застосунку, яка обгортає всю програму (керування темою через MUI ThemeProvider)
+- Store layer – глобальне керування станом за допомогою Zustand (зберігання режиму теми, список завдань, асинхронні дії)
+- Pages layer – сторінки застосунку, які відповідають окремим маршрутам (Home, Lab1–Lab3, TodoList)
+- Components layer – перевикористовувані UI-компоненти без бізнес-логіки (Layout, TodoItem, елементи навігації)
+- Theme layer (service) – окремий сервіс із заздалегідь створеними темами (light / dark), які не генеруються під час рендеру
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Key architectural decisions
 
-## React Compiler
+- Теми створюються один раз у themeService та вибираються залежно від стану застосунку
+- Zustand використовується лише для стану, а UI-компоненти залишаються простими та читабельними
+- Маршрутизація винесена в окремий файл для кращої підтримуваності
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+## UI Component Library Choice
 
-## Expanding the ESLint configuration
+У проєкті використовується Material UI (MUI) як основна компонентна бібліотека.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Material UI було обрано через наявність великої кількості готових, стилістично узгоджених компонентів, які дозволяють швидко створювати сучасний та зручний інтерфейс користувача. Бібліотека має вбудовану підтримку тем, зокрема світлого та темного режимів, що повністю відповідає вимогам проєкту.
+
+- Готові UI-компоненти – кнопки, поля вводу, навігація, списки та інші елементи інтерфейсу
+- Підтримка темізації – зручна реалізація глобальних тем (light / dark)
+- Єдиний стиль – усі компоненти дотримуються однакових дизайн-принципів
+
+
+## Problems and Solutions
+
+1. Генерація теми під час кожного перемикання
+
+Спочатку тема створювалася динамічно за допомогою createTheme в компоненті.
+Через це тема повторно генерувалася при кожному перемиканні між світлим і темним режимами.
+
+Теми було винесено в окремий themeService та створено лише один раз.
+Компонент тепер лише вибирає відповідну тему на основі стану застосунку, а не генерує її під час рендеру.
+
+
+2. Білий екран через неправильні експорти та імпорти
+
+Невідповідність між експортами призводила до появи білого екрана без явних помилок у браузері.
+
+Було виправлено всі імпорти відповідно до структури проєкту.
+
+

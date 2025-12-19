@@ -1,18 +1,19 @@
-import React, { useMemo } from 'react';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import { useThemeStore } from '../store/useThemeStore';
+import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import { useThemeStore } from "../store/useThemeStore";
+import { themes } from "../theme/themeService";
 
-export const AppThemeProvider = ({ children }) => {
-
+function AppThemeProvider({ children }) {
   const mode = useThemeStore((state) => state.mode);
-  const theme = useMemo(() => createTheme({palette: {mode}}), [mode] );
+
+  const theme = themes[mode];
 
   return (
-
     <ThemeProvider theme={theme}>
       <CssBaseline />
       {children}
     </ThemeProvider>
   );
-};
+}
+
+export default AppThemeProvider;

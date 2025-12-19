@@ -1,12 +1,14 @@
-import React from "react";
 import AppRoutes from "./AppRoutes";
-import { AppThemeProvider } from "./providers/AppThemeProvider";
+import { BrowserRouter } from "react-router-dom";
+import AppThemeProvider from "./providers/AppThemeProvider";
 
 function App() {
   return (
-    <AppThemeProvider>
-      <AppRoutes />
-    </AppThemeProvider>
+    <BrowserRouter>
+      <AppThemeProvider>
+        <AppRoutes />
+      </AppThemeProvider>
+    </BrowserRouter>
   );
 }
 
